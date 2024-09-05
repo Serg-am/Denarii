@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="canonical" href="denarii.ru">
+	<meta name="robots" content="index, follow">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css?6361">
+	<link rel="stylesheet" type="text/css" href="/css/style.css?2331">
+	<link rel="stylesheet" type="text/css" href="/css/animate.min.css?3506">
+	<link href='https://fonts.googleapis.com/css?family=Poppins:100,500,700,40&display=swap&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title>DENARII</title>
+
+
+
+    
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
+<!-- Preloader END -->
+
+
+<!-- Main container -->
+<div class="page-container">
+    
+<!-- navigation -->
+<div class="bloc bgc-6533 full-width-bloc d-bloc" id="navigation">
+	<div class="container bloc-sm">
+		<div class="row row-offset">
+			<div class="col ps-0 pe-0">
+				<nav class="navbar navbar-light row navbar-expand-md" role="navigation">
+					<div class="container-fluid">
+						<a class="navbar-brand img-protected bold-text uppercase-text ltc-2175" href="./" data-active-page="active-page-link"><picture><source type="image/webp" srcset="img/1.webp"><img src="img/1.png" alt="logo" class="me-2" width="100" height="75"></picture>denarii.ru</a>
+						<button id="nav-toggle" type="button" class="ui-navbar-toggler navbar-toggler border-0 p-0 ms-auto" aria-expanded="false" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target=".navbar-44712">
+							<span class="navbar-toggler-icon"><svg height="32" viewBox="0 0 32 32" width="32"><path data-custom-classes=" menu-icon-stroke" class="svg-menu-icon menu-icon-thin-bars  menu-icon-stroke" d="m2 9h28m-28 7h28m-28 7h28"></path></svg></span>
+						</button>
+						<div class="collapse navbar-collapse navbar-35179 navbar-44712">
+								<ul class="site-navigation nav navbar-nav ms-auto">
+									<li class="nav-item">
+										<a href="./" data-active-page="active-page-link" class="nav-link a-btn">Домой</a>
+									</li>
+									<li class="nav-item">
+										<a href="./stores/" class="nav-link a-btn">Объявления</a>
+									</li>
+
+									<li sec:authorize="!isAuthenticated()" class="nav-item">
+										<a class="nav-link a-btn" th:href="@{/login}">Вход/Регистрация</a>
+									</li>
+									<li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+										<a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="nav-link" href="#">Профиль</a>
+											<!--<div class="dropdown-divider"></div>-->
+											<a class="nav-link" href="#">Кнопка</a>
+											<div class="dropdown-divider"></div>
+											<a class="nav-link" th:href="@{/logout}">Выйти</a>
+										</div>
+									</li>
+
+								</ul>
+							</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- navigation END -->
+
+<!-- header -->
+<div class="bloc full-width-bloc l-bloc" id="header">
+	<div class="container bloc-md">
+		<div class="row g-0">
+			<div class="offset-lg-1 mb-4 col-lg-4 col-10 offset-1">
+				<p>
+				</p>
+				<label class="form-label label-style text-lg-center">
+					Найди свой обмен!
+				</label>
+
+				<!---------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--->
+
+
+
+
+
+
+
+
+				<!---------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--->
+
+
+
+
+
+
+				<div class="form-group mb-3">
+					<select class="form-control">
+						<option value="0">
+							Страна
+						</option>
+						<option value="1">
+							Вьетнам
+						</option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<select class="form-control">
+						<option value="0">
+							Город
+						</option>
+						<option value="1">
+							Начанг
+						</option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<select class="form-control">
+						<option value="0">
+							Покупаю
+						</option> 
+						<option value="1">
+							USD
+						</option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<select class="form-control">
+						<option value="0">
+							Отдаю
+						</option>
+						<option value="1">
+							RUB
+						</option>
+					</select>
+				</div>
+				<div class="text-center">
+					<a href="./" data-active-page="active-page-link" class="btn btn-lg animated pulse animDelay06 btn-wire" data-appear-anim-style="pulse">Поиск</a>
+				</div>
+			</div>
+			<div class="text-start d-flex mb-4 pe-0 ps-0 col-md-12 mb-lg-0 ps-lg-2 pe-lg-2 col-lg-6">
+				<div class="blocs-grid-container service-grid ms-lg-5 ms-md-5 me-md-5 ps-md-5 pe-md-5 ms-sm-5 me-sm-5 ps-sm-5 pe-sm-5">
+					<div class="store-card bgc-2101 box-card primary-gradient-bg">
+						<h4 class="sm-product-title tc-2175 h4-style">
+							Покупка валюты
+						</h4>
+						<p class="tc-654 mb-0 lg-sub-title p-style">
+							Найдите лучшее предложение
+						</p>
+					</div>
+					<div class="store-card box-card">
+						<h4 class="sm-product-title tc-2101 h4-продажа-валюты-style">
+							Продажа валюты
+						</h4>
+						<p class="tc-6533 mb-0 lg-sub-title p-header-style">
+							Разместите свое объявление
+						</p>
+					</div>
+					<div class="store-card box-card">
+						<h4 class="sm-product-title tc-2101 h4-header-style">
+							Поддержка пользователей
+						</h4>
+						<p class="tc-6533 mb-0 lg-sub-title p-4-header-style">
+							Мы всегда готовы помочь вам
+						</p>
+					</div>
+					<div class="store-card box-card primary-gradient-bg">
+						<h4 class="sm-product-title tc-2175 h4-текст-style">
+							Отзывы и рейтинги
+						</h4>
+						<p class="tc-654 mb-0 lg-sub-title p-4-style">
+							Читайте отзывы и ставьте оценки
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- header END -->
+
+<!-- top-seller-products -->
+<div class="bloc full-width-bloc bgc-5700 l-bloc" id="top-seller-products">
+	<div class="container bloc-md">
+		<div class="row g-0">
+			<div class="col-lg-10 offset-lg-1 col-10 offset-1">
+				<h3 class="mb-4 bold-text">
+					<span class="primary-text">Лучшие в рейтинге<br></span>
+				</h3>
+			</div>
+			<div class="text-start offset-lg-0 col-lg-12 col">
+				<div class="blocs-horizontal-scroll-container">
+					<div class="blocs-horizontal-scroll-control blocs-scroll-control-prev">
+						<span class="blocs-round-btn"><svg width="26" height="26" viewBox="0 0 32 32"><path class="horizontal-scroll-icon" d="M22,2L9,16,22,30"></path></svg></span>
+					</div>
+					<div class="blocs-horizontal-scroll-area row-offset">
+							<div class="store-card sm-card">
+								<picture><source type="image/webp" srcset="img/lazyload-ph.png" data-srcset="img/placeholder-user.webp"><img src="img/lazyload-ph.png" data-src="img/placeholder-user.png" class="img-fluid img-protected rounded-circle mx-auto d-block lazyload" alt="placeholder user" width="240" height="240"></picture>
+								<div class="card-content">
+									<h5 class="sm-product-title tc-6533 mx-auto d-block text-lg-center">
+										<i>Имя пользователя</i>
+									</h5>
+									<div class="row">
+										<div class="col">
+											<h6 class="mb-4 text-lg-center tc-6533">
+												<strong>Рейтинг</strong>
+											</h6>
+										</div>
+										<div class="col">
+											<h6 class="mb-4 h6-style token text-lg-center float-lg-none animated pulse tc-2101" data-appear-anim-style="pulse">
+												5,0<br>
+											</h6>
+										</div>
+									</div><a href="./product/"><img class="img-fluid img-protected arrow-btn sm-arrow-btn float-lg-end mt-lg-3 lazyload" src="img/lazyload-ph.png" data-src="img/arrow.svg" alt="arrow dark" data-bs-placement="top" data-bs-toggle="tooltip" title="Перейти на страницу" width="26" height="26"></a>
+								</div>
+							</div>
+							<div class="store-card sm-card">
+								<picture><source type="image/webp" srcset="img/lazyload-ph.png" data-srcset="img/placeholder-user.webp"><img src="img/lazyload-ph.png" data-src="img/placeholder-user.png" class="img-fluid img-protected rounded-circle mx-auto d-block lazyload" alt="placeholder user" width="240" height="240"></picture>
+								<div class="card-content">
+									<h5 class="sm-product-title tc-6533 mx-auto d-block text-lg-center">
+										<i>Имя пользователя</i>
+									</h5>
+									<div class="row">
+										<div class="col">
+											<h6 class="mb-4 text-lg-center tc-6533">
+												<strong>Рейтинг</strong>
+											</h6>
+										</div>
+										<div class="col">
+											<h6 class="mb-4 h6-style token text-lg-center float-lg-none animated pulse tc-2101" data-appear-anim-style="pulse">
+												5,0<br>
+											</h6>
+										</div>
+									</div><a href="./product/"><img class="img-fluid img-protected arrow-btn sm-arrow-btn float-lg-end mt-lg-3 lazyload" src="/img/lazyload-ph.png" data-src="/img/arrow.svg" alt="arrow dark" data-bs-placement="top" data-bs-toggle="tooltip" title="Перейти на страницу" width="26" height="26"></a>
+								</div>
+							</div>
+							<div class="store-card sm-card">
+								<picture><source type="image/webp" srcset="/img/lazyload-ph.png" data-srcset="img/placeholder-user.webp"><img src="/img/lazyload-ph.png" data-src="img/placeholder-user.png" class="img-fluid img-protected rounded-circle mx-auto d-block lazyload" alt="placeholder user" width="240" height="240"></picture>
+								<div class="card-content">
+									<h5 class="sm-product-title tc-6533 mx-auto d-block text-lg-center">
+										<i>Имя пользователя</i>
+									</h5>
+									<div class="row">
+										<div class="col">
+											<h6 class="mb-4 text-lg-center tc-6533">
+												<strong>Рейтинг</strong>
+											</h6>
+										</div>
+										<div class="col">
+											<h6 class="mb-4 h6-style token text-lg-center float-lg-none animated pulse tc-2101" data-appear-anim-style="pulse">
+												5,0<br>
+											</h6>
+										</div>
+									</div><a href="./product/"><img class="img-fluid img-protected arrow-btn sm-arrow-btn float-lg-end mt-lg-3 lazyload" src="img/lazyload-ph.png" data-src="img/arrow.svg" alt="arrow dark" data-bs-placement="top" data-bs-toggle="tooltip" title="Перейти на страницу" width="26" height="26"></a>
+								</div>
+							</div>
+							<div class="store-card sm-card">
+								<picture><source type="image/webp" srcset="img/lazyload-ph.png" data-srcset="img/placeholder-user.webp"><img src="img/lazyload-ph.png" data-src="img/placeholder-user.png" class="img-fluid img-protected rounded-circle mx-auto d-block lazyload" alt="placeholder user" width="240" height="240"></picture>
+								<div class="card-content">
+									<h5 class="sm-product-title tc-6533 mx-auto d-block text-lg-center">
+										<i>Имя пользователя</i>
+									</h5>
+									<div class="row">
+										<div class="col">
+											<h6 class="mb-4 text-lg-center tc-6533">
+												<strong>Рейтинг</strong>
+											</h6>
+										</div>
+										<div class="col">
+											<h6 class="mb-4 h6-style token text-lg-center float-lg-none animated pulse tc-2101" data-appear-anim-style="pulse">
+												5,0<br>
+											</h6>
+										</div>
+									</div><a href="./product/"><img class="img-fluid img-protected arrow-btn sm-arrow-btn float-lg-end mt-lg-3 lazyload" src="img/lazyload-ph.png" data-src="img/arrow.svg" alt="arrow dark" data-bs-placement="top" data-bs-toggle="tooltip" title="Перейти на страницу" width="26" height="26"></a>
+								</div>
+							</div>
+							<div class="store-card sm-card">
+								<picture><source type="image/webp" srcset="img/lazyload-ph.png" data-srcset="img/placeholder-user.webp"><img src="img/lazyload-ph.png" data-src="img/placeholder-user.png" class="img-fluid img-protected rounded-circle mx-auto d-block lazyload" alt="placeholder user" width="240" height="240"></picture>
+								<div class="card-content">
+									<h5 class="sm-product-title tc-6533 mx-auto d-block text-lg-center">
+										<i>Имя пользователя</i>
+									</h5>
+									<div class="row">
+										<div class="col">
+											<h6 class="mb-4 text-lg-center tc-6533">
+												<strong>Рейтинг</strong>
+											</h6>
+										</div>
+										<div class="col">
+											<h6 class="mb-4 h6-style token text-lg-center float-lg-none animated pulse tc-2101" data-appear-anim-style="pulse">
+												5,0<br>
+											</h6>
+										</div>
+									</div><a href="./product/"><img class="img-fluid img-protected arrow-btn sm-arrow-btn float-lg-end mt-lg-3 lazyload" src="img/lazyload-ph.png" data-src="img/arrow.svg" alt="arrow dark" data-bs-placement="top" data-bs-toggle="tooltip" title="Перейти на страницу" width="26" height="26"></a>
+								</div>
+							</div>
+						</div>
+					<div class="blocs-horizontal-scroll-control blocs-scroll-control-next">
+							<span class="blocs-round-btn"><svg width="26" height="26" viewBox="0 0 32 32"><path class="horizontal-scroll-icon" d="M10.344,2l13,14-13,14"></path></svg></span>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- top-seller-products END -->
+
+<!-- ScrollToTop Button -->
+<button aria-label="Scroll to top button" class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></button>
+<!-- ScrollToTop Button END-->
+
+
+<!-- footer -->
+<div class="bloc bgc-6533 full-width-bloc d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row row-offset">
+			<div class="col-12 ps-lg-0 col-lg-3 col-sm-6 mb-3 mb-lg-0">
+				<h6 class="mg-md text-center text-sm-start tc-2175">
+					О нас
+				</h6><a href="./stores/" class="a-btn a-block footer-link ltc-654 mb-3">О компании</a><a href="./" data-active-page="active-page-link" class="a-btn a-block footer-link ltc-654 mb-3">Реклама на сайте</a><a href="./" data-active-page="active-page-link" class="a-btn a-block footer-link ltc-654 mb-3">Напиши нам</a>
+			</div>
+			<div class="col-12 col-lg-3 col-sm-6 mb-3 mb-lg-0">
+				<h6 class="mg-md text-center text-sm-start tc-2175">
+					Информация
+				</h6><a href="./privacy/" class="a-btn a-block footer-link ltc-654 mb-3">Политика конфиденциальности</a><a href="./cookie/" class="a-btn a-block footer-link ltc-654 mb-3">Политика Cookie</a><a href="./cookie/" class="a-btn a-block footer-link ltc-654 mb-3">Условия использования сервиса</a>
+			</div>
+			<div class="col-12 col-lg-3 col-sm-6 mb-3 mb-sm-0">
+				<h6 class="mg-md text-center text-sm-start tc-2175">
+					DENARII.RU&nbsp;© 2024
+				</h6>
+				<h6 class="mb-4">
+					support@denarii.ru
+				</h6>
+			</div>
+			<div class="col-12 pe-lg-0 col-lg-3 col-sm-6 text-center text-sm-start">
+				<h6 class="mg-md text-center text-sm-start tc-2175">
+					Мы в социальных сетях
+				</h6>
+				<div><div class="social-link-bric">
+<a href="https://twitter.com/blocsapp" class="twitter-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--swatch-var-654)" viewBox="0 0 24 24" style="margin-left: 3px; margin-right: 3px;"><path d="m18.9 2.011h3.68l-8.04 9.31 9.46 12.664h-7.41l-5.8-7.679-6.64 7.679h-3.68l8.6-9.959-9.07-12.015h7.59l5.24 7.021zm-1.29 19.745h2.04l-13.16-17.628h-2.19z"></path></svg></a>
+
+<a href="https://www.facebook.com/cazoobi" class="facebook-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--swatch-var-654)" viewBox="0 0 24 24" style="margin-left: 3px; margin-right: 3px;"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+
+<a href="https://www.instagram.com/cazoobi" class="instagram-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--swatch-var-654)" viewBox="0 0 24 24" style="margin-left: 3px; margin-right: 3px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+
+
+
+
+
+
+
+
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- Main container END -->
+    
+
+
+<!-- Additional JS -->
+<script src="/js/bootstrap.bundle.min.js?3211"></script>
+<script src="/js/blocs.min.js?6404"></script>
+<script src="/js/lazysizes.min.js" defer></script><!-- Additional JS END -->
+
+
+</body>
+</html>
