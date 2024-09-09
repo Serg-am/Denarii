@@ -75,6 +75,8 @@
 </div>
 <!-- navigation END -->
 
+	<!---------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--->
+
 <!-- header -->
 <div class="bloc full-width-bloc l-bloc" id="header">
 	<div class="container bloc-md">
@@ -86,65 +88,59 @@
 					Найди свой обмен!
 				</label>
 
-				<!---------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--->
-
-
-
-
-
-
-
-
-				<!---------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--->
-
-
-
-
-
-
 				<div class="form-group mb-3">
-					<select class="form-control">
-						<option value="0">
-							Страна
-						</option>
-						<option value="1">
-							Вьетнам
-						</option>
+					<select class="form-control" id="country-select">
+						<option value="0">Страна</option>
+						<th:block th:each="country : ${countries}">
+							<option th:value="${country.id}" th:text="${country.name}"></option>
+						</th:block>
 					</select>
 				</div>
 				<div class="form-group mb-3">
-					<select class="form-control">
-						<option value="0">
-							Город
-						</option>
-						<option value="1">
-							Начанг
-						</option>
+					<select class="form-control" id="city-select">
+						<option value="0">Город</option>
 					</select>
 				</div>
+
+				<!-- Выбор покупаемой валюты -->
 				<div class="form-group mb-3">
-					<select class="form-control">
-						<option value="0">
-							Покупаю
-						</option> 
-						<option value="1">
-							USD
-						</option>
+					<select class="form-control" id="currency-buy-select">
+						<option value="0">Купить</option>
+						<th:block th:each="currency : ${currencies}">
+							<option th:value="${currency.code}">
+								<th:block th:if="${currency.symbol != null}">
+									<span th:text="${currency.code + ' (' + currency.symbol + ' ' + currency.name + ')'}"></span>
+								</th:block>
+								<th:block th:if="${currency.symbol == null}">
+									<span th:text="${currency.code + ' (' + currency.name + ')'}"></span>
+								</th:block>
+							</option>
+						</th:block>
 					</select>
 				</div>
+
+				<!-- Выбор продаваемой валюты -->
 				<div class="form-group mb-3">
-					<select class="form-control">
-						<option value="0">
-							Отдаю
-						</option>
-						<option value="1">
-							RUB
-						</option>
+					<select class="form-control" id="currency-sell-select">
+						<option value="0">Продать</option>
+						<th:block th:each="currency : ${currencies}">
+							<option th:value="${currency.code}">
+								<th:block th:if="${currency.symbol != null}">
+									<span th:text="${currency.code + ' (' + currency.symbol + ' ' + currency.name + ')'}"></span>
+								</th:block>
+								<th:block th:if="${currency.symbol == null}">
+									<span th:text="${currency.code + ' (' + currency.name + ')'}"></span>
+								</th:block>
+							</option>
+						</th:block>
 					</select>
 				</div>
+
 				<div class="text-center">
 					<a href="./" data-active-page="active-page-link" class="btn btn-lg animated pulse animDelay06 btn-wire" data-appear-anim-style="pulse">Поиск</a>
 				</div>
+
+
 			</div>
 			<div class="text-start d-flex mb-4 pe-0 ps-0 col-md-12 mb-lg-0 ps-lg-2 pe-lg-2 col-lg-6">
 				<div class="blocs-grid-container service-grid ms-lg-5 ms-md-5 me-md-5 ps-md-5 pe-md-5 ms-sm-5 me-sm-5 ps-sm-5 pe-sm-5">
@@ -375,6 +371,7 @@
 <script src="/js/bootstrap.bundle.min.js?3211"></script>
 <script src="/js/blocs.min.js?6404"></script>
 <script src="/js/lazysizes.min.js" defer></script><!-- Additional JS END -->
+<script src="/js/main.js" defer></script>
 
 
 </body>

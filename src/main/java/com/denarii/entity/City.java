@@ -1,5 +1,6 @@
 package com.denarii.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,5 +19,6 @@ public class City {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_country")
+    @JsonIgnore
     private Country country;
 }
