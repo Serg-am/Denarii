@@ -20,9 +20,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("Поиск");
         UserWebApp user = userRepo.findByEmail(email);  // Изменено на поиск по email
-        System.out.println("Пользователь " + user.getUsername());
         if (user == null) {
             throw new UsernameNotFoundException("Пользователь не найден");
         }
@@ -57,6 +55,10 @@ public class UserService implements UserDetailsService {
 
     public void deleteUser(Long userId) {
         userRepo.deleteById(userId);
+    }
+
+    public UserWebApp findByRegisterName(String registerName) {
+        return userRepo.findByEmail(registerName);
     }
 }
 

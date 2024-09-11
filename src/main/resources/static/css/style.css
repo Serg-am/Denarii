@@ -16,7 +16,7 @@ body{
 .page-container{overflow: hidden;} /* Prevents unwanted scroll space when scroll FX used. */
 a,button{transition: background .3s ease-in-out;outline: none!important;} /* Prevent blue selection glow on Chrome and Safari */
 a:hover{text-decoration: none; cursor:pointer;}
-.scroll-fx-lock-init{position:fixed!important;top: 0;bottom: 0;left :0;right: 0;z-index:99999;} /* ScrollFX Lock */
+.scroll-fx-lock-init{position:fixed!important;top: 0;bottom: 0;left: :0;right: 0;z-index:99999;} /* ScrollFX Lock */
 .blocs-grid-container{display: grid!important;grid-template-columns: 1fr 1fr;grid-template-rows: auto auto;column-gap: 1.5rem;row-gap: 1.5rem;} /* CSS Grid */
 nav .dropdown-menu .nav-link{color:rgba(0,0,0,0.6)!important;} /* Maintain Downdown Menu Link Color in Navigation */
 [data-bs-theme="dark"] nav .dropdown-menu .nav-link{color:var(--bs-dropdown-link-color)!important;} /* Maintain Downdown Menu Link Color in Navigation in Darkmode */
@@ -24,7 +24,7 @@ nav .dropdown-menu .nav-link{color:rgba(0,0,0,0.6)!important;} /* Maintain Downd
 
 /* Preloader */
 
-.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("../img/pageload-spinner.gif") no-repeat center center;animation-name: preloader-fade;animation-delay: 2s;animation-duration: 0.5s;animation-fill-mode: both;}
+.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;animation-name: preloader-fade;animation-delay: 2s;animation-duration: 0.5s;animation-fill-mode: both;}
 .preloader-complete{animation-delay:0.1s;}
 @keyframes preloader-fade {0% {opacity: 1;visibility: visible;}100% {opacity: 0;visibility: hidden;}}
 
@@ -233,6 +233,9 @@ nav .dropdown-menu .nav-link{color:rgba(0,0,0,0.6)!important;} /* Maintain Downd
 /* = Bric adjustment margins
 -------------------------------------------------------------- */
 
+.mg-clear{
+	margin:0;
+}
 .mg-md{
 	margin-top:10px;
 	margin-bottom:20px;
@@ -295,6 +298,8 @@ button{
 	padding-bottom:0;
 }
 
+/* = Cards
+-------------------------------------------------------------- */
 .card-sq, .card-sq .card-header, .card-sq .card-footer{
 	border-radius:0;
 }
@@ -454,6 +459,41 @@ button{
 }
 .show-controls:not(.hide-left-control) > .blocs-scroll-control-prev, .show-controls:not(.hide-right-control) > .blocs-scroll-control-next{
 	opacity:1!important;
+}
+
+/* Wordpress Paginate */
+.wp-paginate {
+	margin: 20px 0;
+	text-align: center;
+}
+.wp-paginate a,.wp-paginate .current{
+	background:rgba(0,0,0,.1);
+	color: rgba(0,0,0,0.8);
+	font-size: 14px;
+	padding: 3px 8px 4px 8px;
+	border-radius: 3px;
+	margin:3px;
+}
+.wp-paginate a:hover, .wp-paginate .current{
+	background:rgba(0,0,0,.5);
+	color: #FFF;
+}
+.wp-paginate .screen-reader-text{
+	display:none;
+}
+.wp-paginate .nav-links{
+	width:100%;
+}
+.wp-paginate-dark.wp-paginate a,.wp-comments-dark .wp-paginate a{
+	background:rgba(255,255,255,.2);
+	color: rgba(255,255,255,.5);
+}
+.wp-paginate-dark .page-numbers.dots{
+	color:rgba(255,255,255,.5);
+}
+.wp-paginate-dark.wp-paginate a:hover, .wp-paginate-dark.wp-paginate .current, .wp-comments-dark .wp-paginate a:hover, .wp-comments-dark .wp-paginate .current{
+	background:rgba(255,255,255,.5);
+	color: #FFF;
 }
 
 /* = Custom Styling
@@ -663,6 +703,15 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 .container-div-style{
 	min-height:452px;
 }
+.h1-style{
+	font-family:"Poppins";
+	font-weight:500;
+}
+.img-style{
+	border-radius:64px 64px 64px 64px;
+	width:300px;
+	height:300px;
+}
 
 /* = Colour
 -------------------------------------------------------------- */
@@ -751,6 +800,93 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 /* = Custom Bric Data
 -------------------------------------------------------------- */
 
+/* WP Widget Styling */.widget-zone ul{
+	list-style: none;
+	padding: 0;
+}
+/* Wordpress Comments */.wp-comments-title{
+	  color: rgba(0,0,0,.8);
+}
+.wp-comment ol.children{
+	  list-style: none;
+}
+.wp-comment-required{
+	  color:red;
+}
+.wp-comment ol.children .card:before{
+	    content: "";
+	    width:2%;
+	    height:50%;
+	    border:2px solid rgba(0,0,0,.3);
+	    border-top-width: 0;
+	    border-right-width: 0;
+	    position: absolute;
+	    left:-3%;
+}
+.wp-comment-content{
+	  display: flex;
+}
+.wp-comment-author, .wp-comment-title{
+	  font-weight: bold;
+	  font-size: 14px;
+	  color: rgba(0,0,0,.8);
+}
+.wp-comment-link,.wp-comment-link:visited{
+	  color: rgba(0,0,0,.6);
+	  font-size: 12px;
+}
+.wp-comment-link:hover,.wp-comment-link:focus{
+	  color: rgba(0,0,0,0.8);
+}
+.wp-reply-link a{
+	  font-size: 14px;
+}
+.wp-comment-submit-btn{
+	  color:#FFF;
+	  background:rgba(0,0,0,.3);
+}
+.wp-comment-submit-btn:hover,.wp-comment-submit-btn:active {
+	  color:#FFF;
+	  background:rgba(0,0,0,.5);
+}
+/* Dark Theme */.wp-comments-dark .card{
+	background:rgba(255,255,255,.2);
+}
+.wp-comments-dark .wp-comments-title, .wp-comments-dark .wp-comment-author, .wp-comments-dark .wp-comment-title, .wp-comments-dark .wp-comment-link:hover, .wp-comments-dark .wp-comment-link:focus, .wp-comments-dark .must-log-in a, .wp-comments-dark .must-log-in a:hover,.wp-comments-dark .must-log-in a:focus{
+	color: rgba(255,255,255,.8);
+}
+.wp-comments-dark .wp-comment-content, .wp-comments-dark .wp-comment-link,.wp-comments-dark .wp-comment-link:visited,.wp-comments-dark .comment-notes,.wp-comments-dark .comment-form-author, .wp-comments-dark .comment-form-email, .wp-comments-dark .comment-form-url,.wp-comments-dark .wp-no-comments,.wp-comments-dark .must-log-in{
+	color: rgba(255,255,255,.6);
+}
+.wp-comments-dark .wp-comment ol.children .card:before{
+	border-color: rgba(255,255,255,.5);
+}
+.wp-comments-dark.wp-comment-seperator-style .card{
+	border-color: rgba(255,255,255,.2);
+}
+.wp-comments-dark .wp-comment-submit-btn{
+	background:rgba(255,255,255,.2);
+	color:#FFF;
+}
+.wp-comments-dark .wp-comment-submit-btn:hover,.wp-comments-dark .wp-comment-submit-btn:active {
+	background:rgba(255,255,255,.4);
+}
+.wp-comment-seperator-style .card{
+	border-width: 0 0 1px 0;
+	border-color:rgba(0,0,0,.1);
+	border-radius: 0;
+	background: transparent;
+}
+.wp-comment-seperator-style .wp-comment ol.children .card:before{
+	border-width: 0 0 1px 1px;
+}
+.wp-comment-seperator-style .card-body{
+	padding:5px 0}.wp-comments-round-avatars img{
+	border-radius: 50%!important;
+}
+.wp-comments-hide-avatar img{
+	display:none;
+}
 
 
 /* = Bloc Padding Multi Breakpoint
@@ -903,9 +1039,10 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	.color-dot{
 	}
 	.img-style{
-		width:40px;
-		height:40px;
 		background-size:40px 40px;
+		width:100px;
+		height:100px;
+		border-radius:28px 28px 28px 28px;
 	}
 	.navbar-brand img{
 		width:50px;
