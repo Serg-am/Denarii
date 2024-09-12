@@ -3,6 +3,8 @@ package com.denarii.service;
 import com.denarii.entity.Ad;
 import com.denarii.repository.AdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,5 +25,14 @@ public class AdService {
 
     public List<Ad> getAllAds() {
         return adRepository.findAll();
+    }
+
+    public Page<Ad> findAdsByPage(PageRequest pageRequest) {
+        return adRepository.findAll(pageRequest);
+    }
+
+
+    public Page<Ad> findAll(PageRequest pageRequest) {
+        return adRepository.findAll(pageRequest);
     }
 }

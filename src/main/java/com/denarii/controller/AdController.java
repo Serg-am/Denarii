@@ -1,17 +1,18 @@
 package com.denarii.controller;
 
 import com.denarii.entity.Ad;
-import com.denarii.entity.Currency;
 import com.denarii.entity.UserWebApp;
 import com.denarii.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Optional;
+import java.util.List;
 
 @Controller
 public class AdController {
@@ -76,5 +77,33 @@ public class AdController {
         System.out.println("Сохранено");
         return "redirect:/ads/new";
     }
+
+
+
+    // Показать список объявлений
+
+    @GetMapping("/ads")
+    public String listAds(
+            @RequestParam(defaultValue = "1") int page,  // Текущая страница
+            @RequestParam(defaultValue = "6") int size,  // Размер страницы
+            Model model) {
+
+        if (page < 1) {
+            page = 1;  // Если пользователь вводит номер страницы меньше 1, устанавливаем на 1
+        }
+
+        // Создаем объект PageRequest для получения данных с пагинацией
+        Page<Ad> adPage = adService.findAdsByPage(PageRequest.of(page - 1, size));  // Индекс страницы начинается с 0
+
+        int totalPages = adPage.getTotalPages();  // Общее количество страниц
+
+        model.addAttribute("ads", adPage.getContent());  // Список объявлений для текущей страницы
+        model.addAttribute("currentPage", page);  // Текущая страница
+        model.addAttribute("totalPages", totalPages);  // Общее количество страниц
+        model.addAttribute("pageSize", size);  // Количество объявлений на странице
+
+        return "ads";  // Возвращаем имя Thymeleaf шаблона для отображения
+    }
+
 }
 

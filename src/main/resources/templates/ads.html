@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<link rel="canonical" href="denarii.ru/adt.html">
+	<link rel="canonical" href="denarii.ru/category.html">
 	<meta name="robots" content="index, follow">
     <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
     
@@ -15,13 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link href='https://fonts.googleapis.com/css?family=Poppins:100,500,700,40&display=swap&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <title>registration-1</title>
+    <title>category</title>
 
-
-    
-<!-- Analytics -->
- 
-<!-- Analytics END -->
     
 </head>
 <body>
@@ -51,7 +46,7 @@
 										<a href="./" class="nav-link a-btn">Домой</a>
 									</li>
 									<li class="nav-item">
-										<a href="/ads" class="nav-link a-btn">Объявления</a>
+										<a href="/ads" data-active-page="active-page-link" class="nav-link a-btn">Объявления</a>
 									</li>
 
 									<li sec:authorize="!isAuthenticated()" class="nav-item">
@@ -63,7 +58,7 @@
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="nav-link" href="#">Профиль</a>
 											<!--<div class="dropdown-divider"></div>-->
-											<a class="nav-link" th:href="@{/ads/new}">Добавить объявление</a>
+											<a class="nav-link" href="#">Кнопка</a>
 											<div class="dropdown-divider"></div>
 											<a class="nav-link" th:href="@{/logout}">Выйти</a>
 										</div>
@@ -78,99 +73,128 @@
 		</div>
 	</div>
 	<!-- navigation END -->
-	<!-------------------------------------------------------------------------->
 
-
-	<!-------------------------------------------------------------------------->
-<!-- header -->
-<div class="bloc full-width-bloc l-bloc" id="header">
-	<div class="container bloc-md">
-		<div class="row g-0 ">
-			<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 text-start col-lg-5 offset-lg-4 text-lg-start">
-				<h1 class="mb-4 text-lg-center text-center tc-5091">
-					Добавить объявление
-				</h1>
-
-
-
-				<div class="store-card fill-card container-div-style pt-lg-5 text-lg-start">
-					<form th:action="@{/ads/new}" th:object="${ad}" method="post" id="form_11949" data-form-type="blocs-form" novalidate data-success-msg="Your message has been sent." data-fail-msg="Sorry it seems that our mail server is not responding, Sorry for the inconvenience!">
-
-						<div class="form-group mb-3">
-							<select class="form-control" id="country-select" th:field="*{country}">
-								<option value="0">Страна</option>
-								<th:block th:each="country : ${countries}">
-									<option th:value="${country.id}" th:text="${country.name}"></option>
-								</th:block>
-							</select>
-						</div>
-						<div class="form-group mb-3">
-							<select class="form-control" id="city-select" th:field="*{city}">
-								<option value="0">Город</option>
-							</select>
-						</div>
-
-						<!-- Выбор покупаемой валюты -->
-						<div class="form-group mb-3">
-							<select class="form-control" id="currency-buy-select" th:field="*{currencyBuy}">
-								<option value="0">Купить</option>
-								<th:block th:each="currency : ${currencies}">
-									<option th:value="${currency.id}" th:text="${currency.code + ' (' + (currency.symbol != null ? currency.symbol + ' ' : '') + currency.name + ')'}"
-											th:selected="${currency.id == ad.currencyBuy?.id}">
-									</option>
-								</th:block>
-							</select>
-						</div>
-
-						<!-- Выбор продаваемой валюты -->
-						<div class="form-group mb-3">
-							<select class="form-control" id="currency-sell-select" th:field="*{currencySell}">
-								<option value="" disabled selected>Продать</option>
-								<th:block th:each="currency : ${currencies}">
-									<option th:value="${currency.id}" th:text="${currency.code + ' (' + (currency.symbol != null ? currency.symbol + ' ' : '') + currency.name + ')'}"
-											th:selected="${currency.id == ad.currencyBuy?.id}">
-									</option>
-								</th:block>
-							</select>
-						</div>
-
-
-
-						<div class="form-group mb-3">
-							<input id="exchange-rate" class="form-control mb-lg-3" type="number" th:field="*{exchangeRate}" required placeholder="Курс" maxlength="32" data-validation-required-message="Введите курс" data-bs-placement="right" data-bs-toggle="tooltip" title="Курс по отнощению продаю = покупаю" />
-						</div>
-						<div class="form-group mb-3">
-							<input id="min-sum" class="form-control mb-lg-3 mb-3" required type="number" th:field="*{minAmount}" placeholder="Минимальная сумма" maxlength="24" data-validation-required-message="Введите минимальную сумму" data-bs-placement="right" data-bs-toggle="tooltip" title="Не менее 8 символов" />
-							<input id="max-sum" class="form-control mb-lg-3 mb-3" required type="number" th:field="*{maxAmount}" placeholder="Максимальная сумма" maxlength="24" data-validation-required-message="Введите максимальную сумму" data-bs-placement="right" data-bs-toggle="tooltip" title="Не менее 8 символов" />
-							<div class="form-check">
-								<input class="form-check-input mb-lg-3 mb-3" type="checkbox" id="input_2772" name="input_2772" checked="checked" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="This is required" />
-								<label class="form-check-label">
-									Наличные (При встрече)
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input mb-lg-3 mb-3" type="checkbox" id="input_85" th:field="*{bankTransferAvailable}" />
-								<label class="form-check-label">
-									Банковский перевод
-								</label>
-							</div>
-							<div class="form-group mb-3">
-								<label class="form-label text-lg-start">
-									Описание:
-								</label>
-								<textarea class="form-control" rows="4" cols="50" id="textarea_292" th:field="*{description}" required data-validation-required-message="Добавьте описание объявления" placeholder="Введите текст"></textarea>
-							</div>
-						</div> 
-						<button class="bloc-button btn btn-lg w-100 btn-c-2101 btn-rd mt-lg-5" type="submit">
-							Создать
-						</button>
-					</form>
+	<!-------------------------------------------------------->
+	<div class="bloc bgc-5700 none full-width-bloc l-bloc" id="bloc-8">
+		<div class="container bloc-md-sm bloc-md bloc-lg-md">
+			<div class="row row-offset">
+				<div class="col-lg-12 offset-lg-0 ps-lg-0 ps-0 pe-0 mb-4">
+					<h1 class="tc-6533 mb-0">
+						Объявления в Бангкок
+					</h1>
 				</div>
+
+				<!-- Iterate over ads -->
+				<div th:each="ad : ${ads}" class="text-start offset-lg-0 ps-0 d-flex pe-0 col-md-6 ps-md-0 pe-md-2 pe-lg-2 col-lg-4 mb-2">
+					<div class="store-card fill-card">
+						<a th:href="@{/product/{id}(id=${ad.id})}"><img th:src="@{/img/usd:rub.webp}" class="img-fluid img-protected mx-auto d-block" alt="Ad image" width="534" height="534" /></a>
+						<div class="row g-0">
+							<div class="col-lg-9">
+								<h5 class="tc-6533 mb-0 lg-sub-title" th:text="${ad.currencySell.code} + ' / ' + ${ad.currencyBuy.code}"></h5>
+								<p class="tc-6533 float-lg-none mb-2" th:text="'Min $ ' + ${ad.minAmount}"></p>
+								<p class="tc-6533 float-lg-none mb-2" th:text="'Курс: ' + ${ad.exchangeRate}"></p>
+								<p class="tc-6533 float-lg-none mb-2">
+									<a th:href="@{/user/{username}(username=${ad.user.username})}" th:text="${ad.user.username}"></a>
+								</p>
+							</div>
+							<div class="col-lg-3 align-self-end">
+								<a th:href="@{/product/{id}(id=${ad.id})}" class="btn btn-sm btn-rd btn-c-2101 float-lg-end buy-btn">Перейти</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Pagination -->
+				<!--<div class="row">
+					<div class="col">
+						<div class="wp-paginate">
+							&lt;!&ndash; Показать "На первую" и "Пред" только если не на первой странице &ndash;&gt;
+							<span th:if="${currentPage > 1}">
+                <a th:href="@{/ads?page=1}">На первую</a>
+                <a th:href="@{/ads(page=${prevPage})}">Пред</a>
+            </span>
+
+							&lt;!&ndash; Показать текущую и следующую страницу &ndash;&gt;
+							<a th:classappend="${currentPage == 1 ? 'current' : ''}" th:href="@{/ads?page=1}">1</a>
+							<span th:if="${currentPage > 2}">
+                <a th:href="@{/ads?page=${currentPage - 1}}" th:text="${currentPage - 1}"></a>
+            </span>
+							<a class="current" th:text="${currentPage}"></a>
+							<span th:if="${currentPage < totalPages}">
+                <a th:href="@{/ads?page=${currentPage + 1}}" th:text="${currentPage + 1}"></a>
+            </span>
+
+							&lt;!&ndash; Показать "След" только если есть следующая страница &ndash;&gt;
+							<span th:if="${currentPage < totalPages}">
+                <a th:href="@{/ads(page=${nextPage})}">След</a>
+            </span>
+						</div>
+					</div>
+				</div>-->
+
+
+				<div id="pagination" class="row">
+					<div class="col">
+						<nav aria-label="Pagination" th:if="${totalPages > 0}">
+							<ul class="wp-paginate">
+								<!-- Кнопка "Начало" -->
+								<li class="pagination-item enabled" th:classappend="${currentPage == 1} ? 'disabled'">
+									<a th:href="@{/ads(page=1, size=${pageSize})}">
+										<span>Начало</span>
+									</a>
+								</li>
+
+								<!-- Кнопка "Предыдущая страница" -->
+								<li class="pagination-item enabled" th:classappend="${currentPage == 1} ? 'disabled'">
+									<a th:href="@{/ads(page=${currentPage - 1}, size=${pageSize})}">
+										<<
+									</a>
+								</li>
+
+								<!-- Если есть пропущенные страницы в начале -->
+								<li class="pagination-item disabled" th:if="${currentPage - 2 > 1}">
+									<a class="page-link" href="#">...</a>
+								</li>
+
+								<!-- Номера страниц -->
+								<li class="pagination-item" th:classappend="${page == currentPage} ? 'active'"
+									th:each="page : ${#numbers.sequence((currentPage > 2 ? currentPage - 2 : 1), (currentPage + 2 < totalPages ? currentPage + 2 : totalPages))}">
+									<a th:href="@{/ads(page=${page}, size=${pageSize})}"
+									   th:text="${page}"></a>
+								</li>
+
+								<!-- Если есть пропущенные страницы в конце -->
+								<li class="pagination-item disabled" th:if="${currentPage + 2 < totalPages}">
+									<a class="page-link" href="#">...</a>
+								</li>
+
+								<!-- Кнопка "Следующая страница" -->
+								<li class="pagination-item enabled" th:classappend="${currentPage == totalPages} ? 'disabled'">
+									<a th:href="@{/ads(page=${currentPage + 1}, size=${pageSize})}">
+										>>
+									</a>
+								</li>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+
+
+
+
 			</div>
 		</div>
 	</div>
-</div>
-<!-- header END -->
+
+
+
+
+
+
+	<!----------------------------------------------------------->
+
 
 <!-- ScrollToTop Button -->
 <button aria-label="Scroll to top button" class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></button>
@@ -231,13 +255,8 @@
 
 
 <!-- Additional JS -->
-<script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.js"></script>
-<script src="/js/blocs.js"></script>
-<script src="/js/jqBootstrapValidation.js"></script>
-<script src="/js/formHandler.js"></script>
-<script src="/js/main.js" defer></script>
-<!-- Additional JS END -->
+<script src="/js/blocs.js"></script><!-- Additional JS END -->
 
 
 </body>

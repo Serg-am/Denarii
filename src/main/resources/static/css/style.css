@@ -16,7 +16,7 @@ body{
 .page-container{overflow: hidden;} /* Prevents unwanted scroll space when scroll FX used. */
 a,button{transition: background .3s ease-in-out;outline: none!important;} /* Prevent blue selection glow on Chrome and Safari */
 a:hover{text-decoration: none; cursor:pointer;}
-.scroll-fx-lock-init{position:fixed!important;top: 0;bottom: 0;left: :0;right: 0;z-index:99999;} /* ScrollFX Lock */
+.scroll-fx-lock-init{position:fixed!important;top: 0;bottom: 0;left :0;right: 0;z-index:99999;} /* ScrollFX Lock */
 .blocs-grid-container{display: grid!important;grid-template-columns: 1fr 1fr;grid-template-rows: auto auto;column-gap: 1.5rem;row-gap: 1.5rem;} /* CSS Grid */
 nav .dropdown-menu .nav-link{color:rgba(0,0,0,0.6)!important;} /* Maintain Downdown Menu Link Color in Navigation */
 [data-bs-theme="dark"] nav .dropdown-menu .nav-link{color:var(--bs-dropdown-link-color)!important;} /* Maintain Downdown Menu Link Color in Navigation in Darkmode */
@@ -24,7 +24,7 @@ nav .dropdown-menu .nav-link{color:rgba(0,0,0,0.6)!important;} /* Maintain Downd
 
 /* Preloader */
 
-.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;animation-name: preloader-fade;animation-delay: 2s;animation-duration: 0.5s;animation-fill-mode: both;}
+.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("/static/img/pageload-spinner.gif") no-repeat center center;animation-name: preloader-fade;animation-delay: 2s;animation-duration: 0.5s;animation-fill-mode: both;}
 .preloader-complete{animation-delay:0.1s;}
 @keyframes preloader-fade {0% {opacity: 1;visibility: visible;}100% {opacity: 0;visibility: hidden;}}
 
@@ -462,7 +462,7 @@ button{
 }
 
 /* Wordpress Paginate */
-.wp-paginate {
+/*.wp-paginate {
 	margin: 20px 0;
 	text-align: center;
 }
@@ -494,7 +494,43 @@ button{
 .wp-paginate-dark.wp-paginate a:hover, .wp-paginate-dark.wp-paginate .current, .wp-comments-dark .wp-paginate a:hover, .wp-comments-dark .wp-paginate .current{
 	background:rgba(255,255,255,.5);
 	color: #FFF;
+}*/
+.wp-paginate {
+	display: flex; /* Используем Flexbox для размещения элементов в строку */
+	justify-content: center; /* Центрирование элементов по горизонтали */
+	margin: 20px 0;
+	padding: 0;
+	list-style: none; /* Убираем маркеры списка */
 }
+
+.wp-paginate .pagination-item {
+	margin: 0 3px; /* Отступы между элементами */
+}
+
+.wp-paginate a, .wp-paginate .current {
+	display: inline-block; /* Убедитесь, что ссылки ведут себя как строки */
+	background:rgba(0,0,0,.5);
+	color: #FFF;
+	font-size: 14px;
+	padding: 3px 8px;
+	border-radius: 3px;
+	text-decoration: underline;
+}
+
+.wp-paginate a:hover, .wp-paginate .current {
+	background: rgba(0, 0, 0, 0.5);
+	color: #FFF;
+}
+
+.wp-paginate .disabled {
+	opacity: 0.5; /* Уменьшаем яркость для отключенных элементов */
+	pointer-events: none; /* Делаем элементы недоступными для клика */
+}
+
+.wp-paginate .active {
+	font-weight: bold; /* Выделяем активную страницу */
+}
+
 
 /* = Custom Styling
 -------------------------------------------------------------- */
@@ -1048,6 +1084,14 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 		width:50px;
 		height:50px;
 	}
-	
+
+
+	.current-page {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+
+
 }
 

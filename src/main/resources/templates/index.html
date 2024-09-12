@@ -47,7 +47,7 @@
 										<a href="./" data-active-page="active-page-link" class="nav-link a-btn">Домой</a>
 									</li>
 									<li class="nav-item">
-										<a href="./stores/" class="nav-link a-btn">Объявления</a>
+										<a href="/ads" class="nav-link a-btn">Объявления</a>
 									</li>
 
 									<li sec:authorize="!isAuthenticated()" class="nav-item">
@@ -59,7 +59,7 @@
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="nav-link" href="#">Профиль</a>
 											<!--<div class="dropdown-divider"></div>-->
-											<a class="nav-link" href="#">Кнопка</a>
+											<a class="nav-link" th:href="@{/ads/new}">Добавить объявление</a>
 											<div class="dropdown-divider"></div>
 											<a class="nav-link" th:href="@{/logout}">Выйти</a>
 										</div>

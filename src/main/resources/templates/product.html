@@ -1,5 +1,7 @@
 <!doctype html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -31,44 +33,51 @@
 
 <!-- Main container -->
 <div class="page-container">
-    
-<!-- navigation -->
-<div class="bloc bgc-6533 full-width-bloc d-bloc" id="navigation">
-	<div class="container bloc-sm">
-		<div class="row row-offset">
-			<div class="col ps-0 pe-0">
-				<nav class="navbar navbar-light row navbar-expand-md" role="navigation">
-					<div class="container-fluid">
-						<a class="navbar-brand img-protected bold-text uppercase-text ltc-2175" href="index.html"><img src="/img/1.png" alt="logo" class="me-2" width="100" height="75" />denarii.ru</a>
-						<button id="nav-toggle" type="button" class="ui-navbar-toggler navbar-toggler border-0 p-0 ms-auto" aria-expanded="false" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target=".navbar-44712">
-							<span class="navbar-toggler-icon"><svg height="32" viewBox="0 0 32 32" width="32"><path data-custom-classes=" menu-icon-stroke" class="svg-menu-icon menu-icon-thin-bars  menu-icon-stroke" d="m2 9h28m-28 7h28m-28 7h28"></path></svg></span>
-						</button>
-						<div class="collapse navbar-collapse navbar-35179 navbar-44712">
-								<ul class="site-navigation nav navbar-nav ms-auto pb-lg-1">
+
+	<!-- navigation -->
+	<div class="bloc bgc-6533 full-width-bloc d-bloc" id="navigation">
+		<div class="container bloc-sm">
+			<div class="row row-offset">
+				<div class="col ps-0 pe-0">
+					<nav class="navbar navbar-light row navbar-expand-md" role="navigation">
+						<div class="container-fluid">
+							<a class="navbar-brand img-protected bold-text uppercase-text ltc-2175" href="./" data-active-page="active-page-link"><picture><source type="image/webp" srcset="/img/1.webp"><img src="/img/1.png" alt="logo" class="me-2" width="100" height="75"></picture>denarii.ru</a>
+							<button id="nav-toggle" type="button" class="ui-navbar-toggler navbar-toggler border-0 p-0 ms-auto" aria-expanded="false" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target=".navbar-44712">
+								<span class="navbar-toggler-icon"><svg height="32" viewBox="0 0 32 32" width="32"><path data-custom-classes=" menu-icon-stroke" class="svg-menu-icon menu-icon-thin-bars  menu-icon-stroke" d="m2 9h28m-28 7h28m-28 7h28"></path></svg></span>
+							</button>
+							<div class="collapse navbar-collapse navbar-35179 navbar-44712">
+								<ul class="site-navigation nav navbar-nav ms-auto">
 									<li class="nav-item">
-										<a href="index.html" class="nav-link a-btn">Домой</a>
+										<a href="./" class="nav-link a-btn">Домой</a>
 									</li>
 									<li class="nav-item">
-										<a href="stores.html" class="nav-link a-btn">Объявления</a>
+										<a href="/ads" class="nav-link a-btn">Объявления</a>
 									</li>
-									<li class="nav-item">
-										<a href="login.html" class="nav-link a-btn">Вход/Регистрация</a>
+
+									<li sec:authorize="!isAuthenticated()" class="nav-item">
+										<a class="nav-link a-btn" th:href="@{/login}">Вход/Регистрация</a>
 									</li>
-									<li class="nav-item">
-										<a href="category-1.html" class="a-btn nav-link">category-1</a>
+									<li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+										<a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="nav-link" href="#">Профиль</a>
+											<!--<div class="dropdown-divider"></div>-->
+											<a class="nav-link" th:href="@{/ads/new}">Добавить объявление</a>
+											<div class="dropdown-divider"></div>
+											<a class="nav-link" th:href="@{/logout}">Выйти</a>
+										</div>
 									</li>
-									<li class="nav-item">
-										<a href="adt.html" class="a-btn nav-link">registration-1</a>
-									</li>
+
 								</ul>
 							</div>
-					</div>
-				</nav>
+						</div>
+					</nav>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- navigation END -->
+	<!-- navigation END -->
 
 <!-- bloc-7 -->
 <div class="bloc l-bloc full-width-bloc" id="bloc-7">
