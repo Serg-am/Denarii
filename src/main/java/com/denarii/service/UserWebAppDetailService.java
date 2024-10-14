@@ -22,12 +22,21 @@ public class UserWebAppDetailService extends UserWebApp implements UserDetailsSe
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("Тут");
-        System.out.println(email);
-        Optional<UserWebApp> userWebAppOptional = Optional.ofNullable(usersRepository.findByEmail(email));
+        Optional<UserWebApp> userWebAppOptional = usersRepository.findByEmailIgnoreCase(email); //Optional.ofNullable(usersRepository.findByEmail(email));
 
         if(userWebAppOptional.isEmpty()){
-            System.out.println("Не найден");
+            System.out.println("Почта не дублируется");//TODO убрать когда не нужно будет
+            throw new UsernameNotFoundException("Почта не найдена");
+        }
+        return new UserWebAppDetails(userWebAppOptional.get());
+    }
+
+
+    public UserDetails loadUserByName(String username) throws UsernameNotFoundException {
+        Optional<UserWebApp> userWebAppOptional = usersRepository.findByUsernameIgnoreCase(username); // Optional.ofNullable(usersRepository.findByUsername(username));
+
+        if(userWebAppOptional.isEmpty()){
+            System.out.println("Пользователь не найден"); //TODO убрать когда не нужно будет
             throw new UsernameNotFoundException("Пользователь не найден");
         }
         return new UserWebAppDetails(userWebAppOptional.get());

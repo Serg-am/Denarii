@@ -25,21 +25,26 @@ public class UserWebAppValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserWebApp userWebApp = (UserWebApp) target;
 
-        try{
-            userWebAppDetailService.loadUserByUsername(userWebApp.getUsername());
-        } catch (UsernameNotFoundException ignored){
-            return; // Если не найден, все в порядке
-        }
+        validateUsername(userWebApp.getUsername(), errors);
+        validateEmail(userWebApp.getEmail(), errors);
+    }
 
-        errors.rejectValue("username", "", "Такое имя пользователя уже существует");
-
+    private void validateUsername(String username, Errors errors) {
         try {
-            userWebAppDetailService.loadUserByUsername(userWebApp.getEmail());
+            userWebAppDetailService.loadUserByName(username);
+            errors.rejectValue("username", "duplicate.username", "Такое имя пользователя уже существует");
         } catch (UsernameNotFoundException ignored) {
-            return;  // Если не найден, все в порядке
+            // Если не найден, все в порядке
         }
+    }
 
-        errors.rejectValue("email", "", "Такой email уже существует");
+    private void validateEmail(String email, Errors errors) {
+        try {
+            userWebAppDetailService.loadUserByUsername(email);
+            errors.rejectValue("email", "duplicate.email", "Такой email уже существует");
+        } catch (UsernameNotFoundException ignored) {
+            // Если не найден, все в порядке
+        }
     }
 }
 

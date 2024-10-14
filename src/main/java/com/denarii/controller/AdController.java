@@ -6,13 +6,12 @@ import com.denarii.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdController {
@@ -103,6 +102,16 @@ public class AdController {
         model.addAttribute("pageSize", size);  // Количество объявлений на странице
 
         return "ads";  // Возвращаем имя Thymeleaf шаблона для отображения
+    }
+
+
+    @GetMapping("/ad/{id}")
+    public String getAd(@PathVariable Long id, Model model) {
+        Optional<Ad> optionalAd = adService.getAdById(id);
+
+        model.addAttribute("ad", optionalAd.get());
+        return "ad"; // Имя HTML-шаблона
+
     }
 
 }

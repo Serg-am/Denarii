@@ -43,14 +43,22 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public String performRegistration(@ModelAttribute("userwebapp") @Valid UserWebApp userWebApp, BindingResult bindingResult, Model model){
-
+    public String performRegistration(@ModelAttribute("userwebapp") @Valid UserWebApp userWebApp,
+                                      BindingResult bindingResult,
+                                      Model model) {
         userWebAppValidator.validate(userWebApp, bindingResult);
 
-        if(bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "auth/registration";
+        }
 
-        registrationService.register(userWebApp);
+        try {
+            registrationService.register(userWebApp);
+        } catch (Exception e) {
+            // Обработка других возможных ошибок
+            model.addAttribute("registrationError", "Произошла ошибка при регистрации. Пожалуйста, попробуйте снова.");
+            return "auth/registration";
+        }
 
         return "redirect:/auth/login";
     }

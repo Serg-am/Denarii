@@ -87,7 +87,7 @@
 				<!-- Iterate over ads -->
 				<div th:each="ad : ${ads}" class="text-start offset-lg-0 ps-0 d-flex pe-0 col-md-6 ps-md-0 pe-md-2 pe-lg-2 col-lg-4 mb-2">
 					<div class="store-card fill-card">
-						<a th:href="@{/product/{id}(id=${ad.id})}"><img th:src="@{/img/usd:rub.webp}" class="img-fluid img-protected mx-auto d-block" alt="Ad image" width="534" height="534" /></a>
+						<a th:href="@{/ad/{id}(id=${ad.id})}"><img th:src="@{/img/usd:rub.webp}" class="img-fluid img-protected mx-auto d-block" alt="Ad image" width="534" height="534" /></a>
 						<div class="row g-0">
 							<div class="col-lg-9">
 								<h5 class="tc-6533 mb-0 lg-sub-title" th:text="${ad.currencySell.code} + ' / ' + ${ad.currencyBuy.code}"></h5>
@@ -98,7 +98,7 @@
 								</p>
 							</div>
 							<div class="col-lg-3 align-self-end">
-								<a th:href="@{/product/{id}(id=${ad.id})}" class="btn btn-sm btn-rd btn-c-2101 float-lg-end buy-btn">Перейти</a>
+								<a th:href="@{/ad/{id}(id=${ad.id})}" class="btn btn-sm btn-rd btn-c-2101 float-lg-end buy-btn">Перейти</a>
 							</div>
 						</div>
 					</div>

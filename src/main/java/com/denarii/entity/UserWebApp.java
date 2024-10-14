@@ -39,6 +39,15 @@ public class UserWebApp implements UserDetails {
     @Column(name = "role")
     private Set<Role> roles = new HashSet<>();
 
+
+    @Column(name = "phone_number")
+    private String phoneNumber; // Номер телефона
+
+    @Column(name = "telegram_username")
+    private String telegramUsername; // Логин Telegram
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

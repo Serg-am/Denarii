@@ -10,7 +10,7 @@
 	<link rel="canonical" href="denarii.ru/product.html">
 	<meta name="robots" content="index, follow">
     <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
-    
+
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
@@ -18,11 +18,11 @@
     <title>product</title>
 
 
-    
+
 <!-- Analytics -->
- 
+
 <!-- Analytics END -->
-    
+
 </head>
 <body>
 
@@ -79,78 +79,75 @@
 	</div>
 	<!-- navigation END -->
 
-<!-- bloc-7 -->
-<div class="bloc l-bloc full-width-bloc" id="bloc-7">
-	<div class="container bloc-md bloc-lg-md">
-		<div class="row">
-			<div class="text-start offset-lg-1 col-lg-10 mb-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-10 offset-1">
-				<h1 class="tc-6533 mb-0 h1-style nonein">
-					Покупка/Продажа $ в Бангкок
-				</h1>
-			</div>
-			<div class="text-start offset-lg-1 mb-4 col-lg-6 mb-md-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-10 offset-1 mb-lg-0">
-				<div class="store-card outline-card fill-card">
-					<img src="/img/usd:rub.webp" class="img-fluid img-protected mx-auto d-block img-style img-rd-lg" alt="tablet product" width="300" height="300" />
+	<!-- Ad Details -->
+	<div class="bloc l-bloc full-width-bloc" id="bloc-7">
+		<div class="container bloc-md bloc-lg-md">
+			<div class="row">
+				<div class="text-start offset-lg-1 col-lg-10 mb-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-10 offset-1">
+					<h1 class="tc-6533 mb-0 h1-style nonein" th:text="${ad.currencySell.name + ' / ' + ad.currencyBuy.name + ' в ' + ad.country.name + ', ' + ad.city.name}">Заголовок объявления</h1>
 				</div>
-				<div class="row">
-					<div class="col">
-						<h5 class="mb-4">
-							Продавец : <a href="index.html" data-bs-placement="top" data-bs-toggle="tooltip" title="Посмотреть профиль">USER</a>
-						</h5>
-						<h4 class="tc-6533">
-							Детали обмена:
-						</h4>
-						<p class="tc-6533 float-lg-none mb-4 mb-lg-1">
-							1 USD = 80.00 RUB
-						</p>
-						<p class="tc-6533 float-lg-none mb-4 mb-lg-1">
-							Min: 100 USD
-						</p>
-						<p class="tc-6533 float-lg-none mb-4">
-							Max: 5000 USD<br>
-						</p>
-						<h4 class="tc-6533">
-							Способы обмена:
-						</h4>
-						<p class="tc-6533 float-lg-none mb-4 mb-lg-1">
-							Наличные (при встрече)<br>
-						</p>
-						<p class="tc-6533 float-lg-none mb-4 mb-lg-0">
-							Банковский перевод<br>
-						</p>
+				<div class="text-start offset-lg-1 mb-4 col-lg-6 mb-md-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-10 offset-1 mb-lg-0">
+					<div class="store-card outline-card fill-card">
+						<img th:src="@{/img/usd:rub.webp}" class="img-fluid img-protected mx-auto d-block img-style img-rd-lg" alt="product image" width="300" height="300" />
 					</div>
-					<div class="col">
-						<h4 class="tc-6533">
-							Локация:
-						</h4>
-						<p class="tc-6533 mb-4 float-lg-none">
-							Тайланд, Бангкок
-						</p>
+					<div class="row">
+						<div class="col">
+							<h5 class="mb-4">
+								Продавец : <a href="#" th:text="${ad.user.username}" data-bs-placement="top" data-bs-toggle="tooltip" title="Посмотреть профиль">USER</a>
+							</h5>
+							<h4 class="tc-6533">
+								Детали обмена:
+							</h4>
+							<p class="tc-6533 float-lg-none mb-4 mb-lg-1" th:text="'1 ' + ${ad.currencySell.name} + ' = ' + ${ad.exchangeRate} + ' ' + ${ad.currencyBuy.name}">1 USD = 80.00 RUB</p>
+							<p class="tc-6533 float-lg-none mb-4 mb-lg-1" th:text="'Min: ' + ${ad.minAmount} + ' ' + ${ad.currencySell.name}">Min: 100 USD</p>
+							<p class="tc-6533 float-lg-none mb-4" th:text="'Max: ' + ${ad.maxAmount} + ' ' + ${ad.currencySell.name}">Max: 5000 USD</p>
+							<h4 class="tc-6533">
+								Способы обмена:
+							</h4>
+							<p class="tc-6533 float-lg-none mb-4 mb-lg-1" th:text="${ad.bankTransferAvailable ? 'Банковский перевод' : ''}">
+								Наличные (при встрече)<br>
+								<span th:if="${ad.bankTransferAvailable}">Банковский перевод</span>
+							</p>
+						</div>
+						<div class="col">
+							<h4 class="tc-6533">
+								Локация:
+							</h4>
+							<p class="tc-6533 mb-4 float-lg-none" th:text="${ad.city.name + ', ' + ad.country.name}">Тайланд, Бангкок</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="text-start col-lg-4 col-md-10 offset-md-1 offset-lg-0 col-sm-10 offset-sm-1 col-10 offset-1">
-				<h3 class="mb-4">
-					Описание:
-				</h3>
-				<p>
-					✅ Принимаю рубли, меняю на лиры и наоборот<br>✅ Можно даже с карты на карту русские рубли 🇷🇺<br><br>🔻ВАЖНО🔻<br>🤝 Только при ВСТРЕЧЕ 🤝 <br>❗️Никаких ПРЕДОПЛАТ❗️<br>❌Избегайте мошенников❌<br>🚙БЫСТРАЯ и БЕСПЛАТНАЯ доставка <br>📍Доставляю в любой адрес НАЛИЧНЫЕ 💴 &nbsp;&nbsp;<br>
-				</p>
-				<div class="text-center">
-					<a href="#" class="btn btn-rd buy-btn ps-5 pe-5 btn-lg btn-c-2101 pe-lg-5" data-bs-toggle="modal" data-bs-target="#modal-13135">Контакты</a>
-				</div>
-				<div id="modal-13135" class="modal fade" tabindex="-1" role="dialog">
-					<div class="modal-dialog  modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="mg-clear">
-									Контакты:
-								</h3>
-							</div>
-							<div class="modal-body">
-								<p class="float-lg-none">
-									Телефон: <a href="tel:+123123123123" data-bs-placement="right" data-bs-toggle="tooltip" title="Позвонить">+123123123123</a><br>Telegram: <a data-bs-placement="right" data-bs-toggle="tooltip" title="Перейти в Telegram">@tgval</a>
-								</p>
+				<div class="text-start col-lg-4 col-md-10 offset-md-1 offset-lg-0 col-sm-10 offset-sm-1 col-10 offset-1">
+					<h3 class="mb-4">
+						Описание:
+					</h3>
+					<p th:text="${ad.description}">
+						✅ Принимаю рубли, меняю на лиры и наоборот<br>✅ Можно даже с карты на карту русские рубли 🇷🇺<br><br>🔻ВАЖНО🔻<br>🤝 Только при ВСТРЕЧЕ 🤝 <br>❗️Никаких ПРЕДОПЛАТ❗️<br>❌Избегайте мошенников❌<br>🚙БЫСТРАЯ и БЕСПЛАТНАЯ доставка <br>📍Доставляю в любой адрес НАЛИЧНЫЕ 💴 &nbsp;&nbsp;<br>
+					</p>
+					<div class="text-center">
+						<a href="#" class="btn btn-rd buy-btn ps-5 pe-5 btn-lg btn-c-2101 pe-lg-5" data-bs-toggle="modal" data-bs-target="#modal-13135">Контакты</a>
+					</div>
+					<div id="modal-13135" class="modal fade" tabindex="-1" role="dialog">
+						<div class="modal-dialog  modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="mg-clear">Контакты</h3>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<p>
+										Телефон: <span th:text="${ad.user.phoneNumber}"></span>
+									</p>
+									<p>
+										Telegram: <span th:text="${ad.user.telegramUsername}"></span>
+									</p>
+									<p>
+										Местоположение: <span th:text="${ad.city.name + ', ' + ad.country.name}">Тайланд, Бангкок</span>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -158,8 +155,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-<!-- bloc-7 END -->
+	<!-- Ad Details END -->
 
 <!-- ScrollToTop Button -->
 <button aria-label="Scroll to top button" class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></button>
@@ -216,7 +212,7 @@
 
 </div>
 <!-- Main container END -->
-    
+
 
 
 <!-- Additional JS -->
