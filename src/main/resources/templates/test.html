@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Объявления</title>
+</head>
+<body>
+<h1>Объявления</h1>
+
+<div>
+    <ul>
+        <li th:each="ad : ${adsPage.content}">
+            <span th:text="${ad.currencyFrom.code} + ' / ' + ${ad.currencyTo.code}"></span>
+            <span th:text="${ad.exchangeRate}"></span>
+            <!-- Другие поля объявления -->
+        </li>
+    </ul>
+
+    <div>
+            <span th:if="${adsPage.hasPrevious()}">
+                <a th:href="@{/ads(page=0)}">На первую</a>
+                <a th:href="@{/ads(page=${adsPage.number - 1})}">Пред</a>
+            </span>
+
+        <span th:each="i : ${#numbers.sequence(0, adsPage.totalPages - 1)}"
+              th:if="${i >= adsPage.number - 2 && i <= adsPage.number + 2}">
+                <a th:href="@{/ads(page=${i})}"
+                   th:text="${i + 1}"
+                   th:classappend="${i == adsPage.number ? 'current-page' : ''}"></a>
+            </span>
+
+        <span th:if="${adsPage.hasNext()}">
+                <a th:href="@{/ads(page=${adsPage.number + 1})}">След</a>
+            </span>
+    </div>
+</div>
+
+<div th:if="${!adsPage.hasContent()}">
+    <p>Объявления не найдены.</p>
+</div>
+</body>
+</html>
