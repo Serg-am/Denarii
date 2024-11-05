@@ -36,17 +36,17 @@
 				<div class="col ps-0 pe-0">
 					<nav class="navbar navbar-light row navbar-expand-md" role="navigation">
 						<div class="container-fluid">
-							<a class="navbar-brand img-protected bold-text uppercase-text ltc-2175" href="./" data-active-page="active-page-link"><picture><source type="image/webp" srcset="/img/1.webp"><img src="/img/1.png" alt="logo" class="me-2" width="100" height="75"></picture>denarii.ru</a>
+							<a class="navbar-brand img-protected bold-text uppercase-text ltc-2175" th:href="@{/}" data-active-page="active-page-link"><picture><source type="image/webp" srcset="/img/1.webp"><img src="/img/1.png" alt="logo" class="me-2" width="100" height="75"></picture>denarii.com</a>
 							<button id="nav-toggle" type="button" class="ui-navbar-toggler navbar-toggler border-0 p-0 ms-auto" aria-expanded="false" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target=".navbar-44712">
 								<span class="navbar-toggler-icon"><svg height="32" viewBox="0 0 32 32" width="32"><path data-custom-classes=" menu-icon-stroke" class="svg-menu-icon menu-icon-thin-bars  menu-icon-stroke" d="m2 9h28m-28 7h28m-28 7h28"></path></svg></span>
 							</button>
 							<div class="collapse navbar-collapse navbar-35179 navbar-44712">
 								<ul class="site-navigation nav navbar-nav ms-auto">
 									<li class="nav-item">
-										<a href="./" class="nav-link a-btn">Домой</a>
+										<a th:href="@{/}" class="nav-link a-btn">Домой</a>
 									</li>
 									<li class="nav-item">
-										<a href="/ads" data-active-page="active-page-link" class="nav-link a-btn">Объявления</a>
+										<a th:href="@{/ads}" data-active-page="active-page-link" class="nav-link a-btn">Объявления</a>
 									</li>
 
 									<li sec:authorize="!isAuthenticated()" class="nav-item">
@@ -56,14 +56,13 @@
 										<a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
 										</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<a class="nav-link" href="#">Профиль</a>
+											<a class="nav-link" th:href="@{/profile}">Профиль</a>
 											<!--<div class="dropdown-divider"></div>-->
-											<a class="nav-link" href="#">Кнопка</a>
+											<a class="nav-link" th:href="@{/ads/new}">Добавить объявление</a>
 											<div class="dropdown-divider"></div>
 											<a class="nav-link" th:href="@{/logout}">Выйти</a>
 										</div>
 									</li>
-
 								</ul>
 							</div>
 						</div>
@@ -80,14 +79,14 @@
 			<div class="row row-offset">
 				<div class="col-lg-12 offset-lg-0 ps-lg-0 ps-0 pe-0 mb-4">
 					<h1 class="tc-6533 mb-0">
-						Объявления в Бангкок
+						Объявления по всему миру
 					</h1>
 				</div>
 
 				<!-- Iterate over ads -->
 				<div th:each="ad : ${ads}" class="text-start offset-lg-0 ps-0 d-flex pe-0 col-md-6 ps-md-0 pe-md-2 pe-lg-2 col-lg-4 mb-2">
 					<div class="store-card fill-card">
-						<a th:href="@{/ad/{id}(id=${ad.id})}"><img th:src="@{/img/usd:rub.webp}" class="img-fluid img-protected mx-auto d-block" alt="Ad image" width="534" height="534" /></a>
+						<a th:href="@{/ad/{id}(id=${ad.id})}"><img th:src="@{/img/usdrub.webp}" class="img-fluid img-protected mx-auto d-block" alt="Ad image" width="534" height="534" /></a>
 						<div class="row g-0">
 							<div class="col-lg-9">
 								<h5 class="tc-6533 mb-0 lg-sub-title" th:text="${ad.currencySell.code} + ' / ' + ${ad.currencyBuy.code}"></h5>
@@ -217,10 +216,10 @@
 			</div>
 			<div class="col-12 col-lg-3 col-sm-6 mb-3 mb-sm-0">
 				<h6 class="mg-md text-center text-sm-start tc-2175">
-					DENARII.RU&nbsp;© 2024
+					DENARII.COM&nbsp;© 2024
 				</h6>
 				<h6 class="mb-4">
-					support@denarii.ru
+					support@denarii.com
 				</h6>
 			</div>
 			<div class="col-12 pe-lg-0 col-lg-3 col-sm-6 text-center text-sm-start">

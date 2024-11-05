@@ -5,6 +5,7 @@ import com.denarii.entity.UserWebApp;
 import com.denarii.repository.UsersRepository;
 import com.denarii.security.UserWebAppDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -49,6 +50,19 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    public UserWebApp getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String email = ((UserDetails) principal).getUsername();  // Получаем email
+            return userRepo.findByEmail(email);  // Ищем пользователя по email
+        } else if (principal instanceof String) {
+            String username = (String) principal;  // На случай, если аутентификация произошла с помощью строки
+            return userRepo.findByEmail(username);
+        }
+
+        return null;  // Если пользователь не найден
+    }
     public void saveUser(UserWebApp user) {
         userRepo.save(user);
     }
